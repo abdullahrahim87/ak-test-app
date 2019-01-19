@@ -92,6 +92,7 @@ $app->singleton(
 | can respond to, as well as the controllers that may handle them.
 |
 */
+$app->configure('slack');
 
 $app->router->group([
     'namespace' => 'App\Http\Controllers',

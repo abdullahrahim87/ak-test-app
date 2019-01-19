@@ -14,3 +14,18 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+//Oath Authentication
+// Oath process
+
+$router->group(['slack' => 'admin'], function ($app) {
+    $app->get('/login', 'SlackController@login');
+    $app->get('/connect', 'SlackController@connect');
+});
+
+
+//This is the main Calculator App Route.
+$router->post('/calculate', 'CalculatorController@index');
+
+
+
