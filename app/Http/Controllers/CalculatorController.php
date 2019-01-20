@@ -30,6 +30,10 @@ class CalculatorController extends BaseController
             $question = $event['text'];
             $channel =  $event['channel'];
 
+            /*
+             * this subtype check is done to avoid infinite loop as it checks another message and repeats itself.
+             * */
+            $answer = "Please Enter a number between 0 and 1000";
             if(!isset($event['subtype'])){
                 $httpClient = new GuzzleHttp\Client();
 
@@ -50,7 +54,7 @@ class CalculatorController extends BaseController
                     ]
                 ]);
             }
-            return response()->json(['success' => true]);
+            return response()->json(['answer' => $answer]);
         }
     }
 }
