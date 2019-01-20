@@ -1,7 +1,7 @@
 # ak-test-app
 This is a test to build Slack Bot App
 
-##Deployment Steps:
+##Deployment and Testing Steps:
 
 1. Change .env file. 
 
@@ -24,6 +24,20 @@ Copy **CLIENT ID** and **CLIENT SECRET** from Basic Info Tab of **settings** men
 
 Run the application and Put you URL of your application append **"/calculate"** in the url 
 https://api.slack.com/apps/{YOUR_APP_ID}/event-subscriptions?
+
+If you want to just test this app, you can be added to my workspace that is 
+<br>
+**https://abdullahbot1.slack.com**
+
+## Deployment 
+
+I set up CI to deploy this app using Jenkins. But it is running on simple php inbuild server 
+(php -S abdullahrahim.me:8000 -t public) but it fetches the code from git repository.
+
+## Docker 
+Work is in progress. If needed I can do it. I started in the beginning but stopped due to lack of time
+ 
+
 
 Hurray!!
 See It in Action

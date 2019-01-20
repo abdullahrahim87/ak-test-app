@@ -29,7 +29,7 @@ class CalculatorController extends BaseController
             $event = $payload->get('event');
             $question = $event['text'];
             $channel =  $event['channel'];
-
+            //TODO : add some validation related to these fields as well.
             /*
              * this subtype check is done to avoid infinite loop as it checks another message and repeats itself.
              * */
@@ -43,16 +43,23 @@ class CalculatorController extends BaseController
                 else{
                     $answer = "Please Enter a number between 0 and 1000";
                 }
-                $response = $httpClient->post(config('slack.postMessage'), [
-                    'headers' => ['Accept' => 'application/json'],
-                    'form_params' => [
-                        'token' => env('SLACK_BOT_TOKEN'),
-                        'text' =>  $answer,
-                        'channel'=> $channel,
-                        'as_user'=>false,
-                        'username'=> $this->botName
-                    ]
-                ]);
+                try{
+                    $response = $httpClient->post(config('slack.postMessage'), [
+                        'headers' => ['Accept' => 'application/json'],
+                        'form_params' => [
+                            'token' => env('SLACK_BOT_TOKEN'),
+                            'text' =>  $answer,
+                            'channel'=> $channel,
+                            'as_user'=>false,
+                            'username'=> $this->botName
+                        ]
+                    ]);
+                }
+                catch (GuzzleHttp\Exception\ClientException $exception){
+                    $responseBody = $exception->getResponse()->getBody(true);
+                    LOG::debug($responseBody);
+                }
+
             }
             return response()->json(['answer' => $answer]);
         }
