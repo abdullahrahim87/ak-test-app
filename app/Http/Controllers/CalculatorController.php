@@ -22,10 +22,10 @@ class CalculatorController extends BaseController
 
         $payload = $request->json();
 
-        if ($payload->get('type') === 'url_verification') {
+        if ($payload->get('type') === config('slack.verificationKey')) {
             return $payload->get('challenge');
         }
-        else if ($payload->get('type') === 'event_callback') {
+        else if ($payload->get('type') === config('slack.eventCallback')) {
             $event = $payload->get('event');
             $question = $event['text'];
             $channel =  $event['channel'];
