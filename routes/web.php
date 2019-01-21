@@ -18,7 +18,7 @@ $router->get('/', function () use ($router) {
 //Oath Authentication
 // Oath process
 
-$router->group(['slack' => 'admin'], function ($app) {
+$router->group(['prefix' => 'slack'], function ($app) {
     $app->get('/login', 'SlackController@login');
     $app->get('/connect', 'SlackController@connect');
 });
@@ -26,6 +26,3 @@ $router->group(['slack' => 'admin'], function ($app) {
 
 //This is the main Calculator App Route.
 $router->post('/calculate', 'CalculatorController@index');
-
-
-

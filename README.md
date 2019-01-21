@@ -1,7 +1,7 @@
 # ak-test-app
 This is a test to build Slack Bot App
 
-##Deployment and Testing Steps:
+## Deployment and Testing Steps:
 
 1. Change .env file. 
 
@@ -35,8 +35,13 @@ I set up CI to deploy this app using Jenkins. But it is running on simple php in
 (php -S abdullahrahim.me:8000 -t public) but it fetches the code from git repository.
 
 ## Docker 
-Work is in progress. If needed I can do it. I started in the beginning but stopped due to lack of time
+I have finally created my first (production level) docker image. 
+
+My repository is **abdullahrahim87/lumen-on-slack-ak:v1**
  
+ docker pull abdullahrahim87/lumen-on-slack-ak:v1
+
+
 
 
 Hurray!!

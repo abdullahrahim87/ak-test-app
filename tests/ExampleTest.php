@@ -1,3 +1,4 @@
+
 <?php
 
 use Laravel\Lumen\Testing\DatabaseMigrations;
@@ -18,4 +19,5 @@ class ExampleTest extends TestCase
             $this->app->version(), $this->response->getContent()
         );
     }
+
 }
